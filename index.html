@@ -3,156 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desi Dhaba | Traditional Taste & Molecular Science</title>
+    <title>Desi Dhaba | Mobile Science Lab</title>
     <style>
-        /* CSS for an Authentic High-End Look */
         :root {
             --accent-gold: #d4af37;
             --deep-maroon: #5d1010;
             --clay-orange: #d35400;
             --cream: #fff9f1;
             --science-green: #2ecc71;
-            --text-gray: #333;
         }
 
         body {
-            font-family: 'Playfair Display', serif; /* Use a serif font for a premium feel */
+            font-family: 'Segoe UI', serif;
             margin: 0;
             background-color: var(--cream);
-            color: var(--text-gray);
+            color: #333;
+            overflow-x: hidden; /* Prevents side-scrolling on phones */
         }
 
-        /* Disclaimer Tag */
+        /* DISCLAIMER BANNER - Essential for your project */
         .disclaimer-banner {
             background-color: #ffeb3b;
             color: #000;
             text-align: center;
-            padding: 10px;
-            font-size: 0.9rem;
+            padding: 8px;
+            font-size: 0.75rem;
             font-weight: bold;
-            border-bottom: 2px solid #fbc02d;
-            text-transform: uppercase;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        /* Navigation */
+        /* Mobile-Friendly Navigation */
         nav {
             background: #fff;
-            padding: 20px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: 15px;
+            text-align: center;
             border-bottom: 1px solid #ddd;
         }
 
         .logo {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 900;
             color: var(--deep-maroon);
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
 
-        /* Hero Section */
+        /* Hero Section - Adjusted for vertical phone screens */
         .hero {
-            height: 80vh;
+            height: 60vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&q=80&w=2000'); /* Placeholder for a high-res Desi food image */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1585937421612-70a008356fbe?q=80&w=1000');
             background-size: cover;
             background-position: center;
             color: white;
-            padding: 0 10%;
+            padding: 20px;
         }
 
         .hero h1 {
-            font-size: 4.5rem;
+            font-size: 2.5rem; /* Smaller for mobile */
             margin: 0;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
         }
 
         .hero p {
-            font-size: 1.5rem;
-            margin-top: 10px;
-            font-style: italic;
+            font-size: 1.1rem;
             color: var(--accent-gold);
         }
 
-        /* Science Lab Section */
+        /* Nutrition Section */
         .science-section {
-            padding: 80px 10%;
-            background: #fff;
+            padding: 40px 20px;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: 1.8rem;
             color: var(--deep-maroon);
-            margin-bottom: 50px;
         }
 
         .nutrition-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            display: flex;
+            flex-direction: column; /* Stacks cards on top of each other */
+            gap: 20px;
         }
 
         .bio-card {
-            background: var(--cream);
-            padding: 30px;
-            border-radius: 5px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
             border-left: 5px solid var(--accent-gold);
-            box-shadow: 10px 10px 0px rgba(93, 16, 16, 0.1);
-        }
-
-        .bio-card h3 {
-            color: var(--clay-orange);
-            font-size: 1.6rem;
-            margin-bottom: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
         .scientific-label {
             font-weight: bold;
             color: var(--science-green);
+            font-size: 0.7rem;
             text-transform: uppercase;
-            font-size: 0.8rem;
-            display: block;
-            margin-bottom: 5px;
         }
 
         /* Footer */
         footer {
             background: var(--deep-maroon);
             color: white;
-            padding: 60px 10%;
+            padding: 40px 20px;
             text-align: center;
+            font-size: 0.9rem;
         }
 
-        .footer-slogan {
-            font-size: 1.8rem;
-            color: var(--accent-gold);
-            margin-bottom: 20px;
+        /* Responsive Desktop View - If someone opens it on a PC */
+        @media (min-width: 768px) {
+            .nutrition-grid {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .bio-card {
+                width: 30%;
+            }
+            .hero h1 {
+                font-size: 4rem;
+            }
         }
-
     </style>
 </head>
 <body>
 
     <div class="disclaimer-banner">
-        ⚠️ NOTICE: Desi Dhaba is a fictional entity created for a school science project. This is not a real business.
+        PROJECT NOTICE: DESI DHABA IS FICTIONAL & FOR SCIENCE ASSIGNMENT ONLY
     </div>
 
     <nav>
         <div class="logo">DESI DHABA</div>
-        <div style="font-family: sans-serif; letter-spacing: 1px;">THE LAB | MENU | NUTRITION</div>
     </nav>
 
     <header class="hero">
         <h1>Molecular Comfort.</h1>
         <p>Flavor That Hugs Your Soul</p>
-        <div style="margin-top: 30px; border: 1px solid white; padding: 10px 25px; cursor: pointer;">EXPLORE THE SCIENCE</div>
     </header>
 
     <section class="science-section">
@@ -161,26 +153,24 @@
             <div class="bio-card">
                 <span class="scientific-label">Bio-Active: Lycopene</span>
                 <h3>The Heart Pot</h3>
-                <p>A hand-crafted stew featuring tomatoes and olives. These act as natural antioxidants, protecting cellular membranes from oxidative damage.</p>
+                <p>Antioxidants from tomatoes protect your cells from damage.</p>
             </div>
             <div class="bio-card">
-                <span class="scientific-label">Macronutrient: Complex Carbs</span>
+                <span class="scientific-label">Macronutrient: ATP Energy</span>
                 <h3>Handmade Grains</h3>
-                <p>Our whole-grain breads are crafted by hand to ensure a slow glucose release. This provides sustained ATP production for peak brain performance.</p>
+                <p>Complex carbs for steady glucose and brain power.</p>
             </div>
             <div class="bio-card">
-                <span class="scientific-label">Micro-Nutrient: Retinol & Iron</span>
+                <span class="scientific-label">Micronutrient: Iron</span>
                 <h3>Green Infusions</h3>
-                <p>Rich in herbs and spinach, providing essential Iron for blood oxygenation and Vitamin K for bone density.</p>
+                <p>Essential minerals for blood oxygen and strong bones.</p>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="footer-slogan">Desi Dhaba: Where Tradition Meets Nutrition</div>
-        <p>Crafted by Hand. Science in Every Bite.</p>
-        <hr style="border: 0.5px solid rgba(255,255,255,0.2); margin: 30px 0;">
-        <p style="font-size: 0.8rem; opacity: 0.7;">Grade 8 Science Assignment - Project: The Chemistry of Cooking</p>
+        <p><strong>Desi Dhaba:</strong> Tradition Meets Nutrition</p>
+        <p style="opacity: 0.7; font-size: 0.7rem;">Grade 8 Science Project</p>
     </footer>
 
 </body>
