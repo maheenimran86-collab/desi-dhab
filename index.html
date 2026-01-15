@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desi Dhaba | Traditional Taste & Molecular Science</title>
+    <style>
+        /* CSS for an Authentic High-End Look */
+        :root {
+            --accent-gold: #d4af37;
+            --deep-maroon: #5d1010;
+            --clay-orange: #d35400;
+            --cream: #fff9f1;
+            --science-green: #2ecc71;
+            --text-gray: #333;
+        }
+
+        body {
+            font-family: 'Playfair Display', serif; /* Use a serif font for a premium feel */
+            margin: 0;
+            background-color: var(--cream);
+            color: var(--text-gray);
+        }
+
+        /* Disclaimer Tag */
+        .disclaimer-banner {
+            background-color: #ffeb3b;
+            color: #000;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            border-bottom: 2px solid #fbc02d;
+            text-transform: uppercase;
+        }
+
+        /* Navigation */
+        nav {
+            background: #fff;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--deep-maroon);
+            letter-spacing: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&q=80&w=2000'); /* Placeholder for a high-res Desi food image */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 0 10%;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin: 0;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-top: 10px;
+            font-style: italic;
+            color: var(--accent-gold);
+        }
+
+        /* Science Lab Section */
+        .science-section {
+            padding: 80px 10%;
+            background: #fff;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--deep-maroon);
+            margin-bottom: 50px;
+        }
+
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .bio-card {
+            background: var(--cream);
+            padding: 30px;
+            border-radius: 5px;
+            border-left: 5px solid var(--accent-gold);
+            box-shadow: 10px 10px 0px rgba(93, 16, 16, 0.1);
+        }
+
+        .bio-card h3 {
+            color: var(--clay-orange);
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .scientific-label {
+            font-weight: bold;
+            color: var(--science-green);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--deep-maroon);
+            color: white;
+            padding: 60px 10%;
+            text-align: center;
+        }
+
+        .footer-slogan {
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="disclaimer-banner">
+        ⚠️ NOTICE: Desi Dhaba is a fictional entity created for a school science project. This is not a real business.
+    </div>
+
+    <nav>
+        <div class="logo">DESI DHABA</div>
+        <div style="font-family: sans-serif; letter-spacing: 1px;">THE LAB | MENU | NUTRITION</div>
+    </nav>
+
+    <header class="hero">
+        <h1>Molecular Comfort.</h1>
+        <p>Flavor That Hugs Your Soul</p>
+        <div style="margin-top: 30px; border: 1px solid white; padding: 10px 25px; cursor: pointer;">EXPLORE THE SCIENCE</div>
+    </header>
+
+    <section class="science-section">
+        <h2 class="section-title">The Biological Formula</h2>
+        <div class="nutrition-grid">
+            <div class="bio-card">
+                <span class="scientific-label">Bio-Active: Lycopene</span>
+                <h3>The Heart Pot</h3>
+                <p>A hand-crafted stew featuring tomatoes and olives. These act as natural antioxidants, protecting cellular membranes from oxidative damage.</p>
+            </div>
+            <div class="bio-card">
+                <span class="scientific-label">Macronutrient: Complex Carbs</span>
+                <h3>Handmade Grains</h3>
+                <p>Our whole-grain breads are crafted by hand to ensure a slow glucose release. This provides sustained ATP production for peak brain performance.</p>
+            </div>
+            <div class="bio-card">
+                <span class="scientific-label">Micro-Nutrient: Retinol & Iron</span>
+                <h3>Green Infusions</h3>
+                <p>Rich in herbs and spinach, providing essential Iron for blood oxygenation and Vitamin K for bone density.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-slogan">Desi Dhaba: Where Tradition Meets Nutrition</div>
+        <p>Crafted by Hand. Science in Every Bite.</p>
+        <hr style="border: 0.5px solid rgba(255,255,255,0.2); margin: 30px 0;">
+        <p style="font-size: 0.8rem; opacity: 0.7;">Grade 8 Science Assignment - Project: The Chemistry of Cooking</p>
+    </footer>
+
+</body>
+</html>
