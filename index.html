@@ -3,218 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desi Dhaba | High-Performance Nutrition by M. Mikaeel Imran</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Oswald:wght@500;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Desi Dhaba | M. Mikaeel Imran</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Oswald:wght@500&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --gold: #d4af37;
-            --maroon: #800000;
-            --obsidian: #0a0a0a;
-            --science-blue: #00d2ff;
-            --glass: rgba(255, 255, 255, 0.05);
-            --gold-gradient: linear-gradient(45deg, #d4af37, #f2d06b);
+            --maroon: #600000;
+            --black: #0a0a0a;
+            --glass: rgba(255, 255, 255, 0.07);
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        
+
         body { 
             font-family: 'Montserrat', sans-serif; 
-            background-color: var(--obsidian);
-            background-image: url('https://www.transparenttextures.com/patterns/black-linen-2.png');
-            color: white; 
-            overflow-x: hidden;
+            background: linear-gradient(135deg, #1a1a1a 0%, #050505 100%);
+            color: white;
+            line-height: 1.5;
         }
 
-        /* FLOATING ACTION BUTTON */
-        .fab {
-            position: fixed; bottom: 30px; right: 30px;
-            background: var(--gold-gradient); color: black;
-            padding: 20px 30px; border-radius: 50px; font-weight: 900;
-            text-transform: uppercase; text-decoration: none; z-index: 10000;
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
-            transition: 0.3s; cursor: pointer; border: none;
+        /* STICKY HEADER */
+        header {
+            background: rgba(0,0,0,0.9);
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--maroon);
         }
-        .fab:hover { transform: scale(1.1); box-shadow: 0 15px 40px rgba(212, 175, 55, 0.6); }
+        .logo { font-family: 'Cinzel Decorative'; font-size: 1.5rem; color: var(--gold); }
+        .author { font-size: 0.7rem; letter-spacing: 2px; color: #888; display: block; }
 
-        /* NAVIGATION */
-        nav {
-            background: rgba(10, 10, 10, 0.9); padding: 25px 8%;
-            display: flex; justify-content: space-between; align-items: center;
-            position: sticky; top: 0; z-index: 9000;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            backdrop-filter: blur(10px);
-        }
-        .logo { font-family: 'Cinzel Decorative'; font-size: 1.8rem; color: var(--gold); }
-        .nav-btns a { text-decoration: none; color: white; margin-left: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; }
-
-        /* HERO */
+        /* HERO SECTION */
         .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.3)), 
-                        url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=2000');
-            background-size: cover; background-position: center;
-            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+            padding: 80px 20px;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1000');
+            background-size: cover;
+            background-position: center;
         }
-        .hero h1 { font-family: 'Cinzel Decorative'; font-size: 5.5rem; letter-spacing: 5px; margin-bottom: 10px; color: white; }
-        .hero p { font-family: 'Playfair Display'; font-size: 1.8rem; color: var(--gold); margin-bottom: 40px; }
+        .hero h1 { font-family: 'Cinzel Decorative'; font-size: 3rem; margin-bottom: 10px; line-height: 1.1; }
+        .hero p { color: var(--gold); font-size: 1.1rem; margin-bottom: 30px; }
 
-        .btn-main {
-            padding: 15px 40px; background: none; border: 2px solid var(--gold);
-            color: white; font-weight: bold; text-transform: uppercase; letter-spacing: 2px;
-            cursor: pointer; transition: 0.4s; text-decoration: none;
+        /* BUTTONS */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--gold);
+            color: black;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            transition: 0.3s;
         }
-        .btn-main:hover { background: var(--gold); color: black; }
+        .btn:active { transform: scale(0.95); }
 
-        /* SECTION HEADINGS */
-        .section-header { text-align: center; margin: 100px 0 60px; }
-        .section-header h2 { font-family: 'Cinzel Decorative'; font-size: 3.5rem; color: var(--gold); letter-spacing: 5px; }
-        .divider { width: 100px; height: 3px; background: var(--maroon); margin: 20px auto; border: 1px solid var(--gold); }
-
-        /* SCIENCE SECTION */
-        .science-container { padding: 0 10%; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .glass-card {
-            background: var(--glass); padding: 50px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);
-            backdrop-filter: blur(5px); transition: 0.3s;
+        /* SECTION STYLING */
+        section { padding: 60px 20px; }
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
         }
-        .glass-card:hover { border-color: var(--gold); transform: translateY(-10px); }
-        .formula { color: var(--science-blue); font-family: 'Courier New', monospace; font-weight: bold; margin-bottom: 15px; display: block; }
-        .glass-card h3 { font-family: 'Oswald'; font-size: 1.8rem; color: var(--gold); margin-bottom: 15px; }
+        .section-title h2 { font-family: 'Cinzel Decorative'; font-size: 2rem; color: var(--gold); }
+        .line { width: 60px; height: 3px; background: var(--maroon); margin: 10px auto; }
+
+        /* SCIENCE CARDS (Responsive Grid) */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr; /* 1 column on mobile */
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .grid { grid-template-columns: 1fr 1fr 1fr; } /* 3 columns on desktop */
+        }
+
+        .card {
+            background: var(--glass);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            text-align: center;
+        }
+        .card h3 { color: var(--gold); font-family: 'Oswald'; margin-bottom: 10px; }
+        .formula { font-family: monospace; color: #00d2ff; display: block; margin-bottom: 10px; }
 
         /* MENU SECTION */
-        .menu-box { margin: 0 10%; background: rgba(255,255,255,0.02); border-radius: 30px; padding: 60px; }
-        .menu-row { display: flex; justify-content: space-between; align-items: center; padding: 25px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .item-name { font-family: 'Playfair Display'; font-size: 1.8rem; }
-        .item-tag { background: rgba(0,210,255,0.1); color: var(--science-blue); padding: 4px 10px; border-radius: 5px; font-size: 0.7rem; font-weight: bold; }
-        .price-tag { font-family: 'Oswald'; font-size: 1.6rem; color: var(--gold); }
+        .menu-list { background: rgba(255,255,255,0.03); border-radius: 15px; padding: 10px; }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .item-name { font-weight: bold; font-size: 1rem; }
+        .price { color: var(--gold); font-family: 'Oswald'; font-size: 1.1rem; }
 
         /* REVIEWS */
-        .review-wall { padding: 100px 10%; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .review-card {
-            background: #111; padding: 40px; border-radius: 15px; border-top: 4px solid var(--maroon);
+        .review {
+            background: #111;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--maroon);
         }
-        .stars { color: var(--gold); margin-bottom: 15px; }
-        .quote { font-style: italic; color: #ccc; margin-bottom: 20px; }
-        .reviewer { font-weight: bold; color: var(--gold); text-transform: uppercase; font-size: 0.8rem; }
+        .review p { font-style: italic; font-size: 0.9rem; margin-bottom: 10px; color: #ccc; }
+        .name { color: var(--gold); font-weight: bold; font-size: 0.75rem; text-transform: uppercase; }
 
         /* FOOTER */
-        footer { background: #050505; padding: 80px 10%; text-align: center; border-top: 1px solid var(--gold); }
-        .sig { font-family: 'Cinzel Decorative'; font-size: 2.5rem; color: white; margin: 30px 0; letter-spacing: 10px; }
-        .socials a { color: var(--gold); margin: 0 15px; font-size: 1.2rem; text-decoration: none; font-weight: bold; }
+        footer {
+            padding: 60px 20px;
+            text-align: center;
+            background: #000;
+            border-top: 1px solid var(--gold);
+        }
+        .footer-name { font-family: 'Cinzel Decorative'; font-size: 1.8rem; margin: 20px 0; letter-spacing: 5px; }
 
+        /* BOOKING BUTTON (MOBILE FIX) */
+        .book-now {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 400px;
+            z-index: 2000;
+            text-align: center;
+            background: var(--gold);
+            color: black;
+            padding: 15px;
+            font-weight: 900;
+            border-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            text-decoration: none;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 <body>
 
-    <button class="fab" onclick="alert('Table Reserved for M. Mikaeel Imran!')">Book a Table</button>
-
-    <nav>
+    <header>
         <div class="logo">DESI DHABA</div>
-        <div class="nav-btns">
-            <a href="#science">Lab</a>
-            <a href="#menu">Menu</a>
-            <a href="#reviews">Reviews</a>
-            <a href="#" style="background: var(--gold); color: black; padding: 10px 20px; border-radius: 5px;">Founder</a>
-        </div>
-    </nav>
-
-    <header class="hero">
-        <p>A MASTERPIECE BY M. MIKAEEL IMRAN</p>
-        <h1>ULTRA-FUEL</h1>
-        <p>Molecular Excellence. Ancestral Taste.</p>
-        <div>
-            <a href="#menu" class="btn-main">View The Formulas</a>
-            <a href="#" class="btn-main" style="margin-left: 20px; background: white; color: black;">Download Lab Report</a>
-        </div>
+        <span class="author">FOUNDED BY M. MIKAEEL IMRAN</span>
     </header>
 
-    <div class="section-header" id="science">
-        <h2>THE LABORATORY</h2>
-        <div class="divider"></div>
-        <p>Where bio-chemistry meets the tandoor.</p>
+    <a href="#menu" class="book-now">Order Bio-Fuel Now</a>
+
+    <div class="hero">
+        <h1>ULTRA-FUEL</h1>
+        <p>Molecular Comfort. Cellular Science.</p>
+        <a href="#science" class="btn">View The Formula</a>
     </div>
 
-    <div class="science-container">
-        <div class="glass-card">
-            <span class="formula">$C_{40}H_{56}$</span>
-            <h3>Lycopene Infusion</h3>
-            <p>Our tomatoes are slow-oxidized to release peak antioxidant levels for heart-cell resilience.</p>
-            <button style="margin-top:20px; background:none; border:1px solid var(--science-blue); color:var(--science-blue); padding:5px 15px; cursor:pointer;">Analysis Report</button>
+    <section id="science">
+        <div class="section-title">
+            <h2>THE BIOLOGY</h2>
+            <div class="line"></div>
         </div>
-        <div class="glass-card">
-            <span class="formula">$C_{21}H_{20}O_{6}$</span>
-            <h3>Neural Curcumin</h3>
-            <p>Paired with Piperine to increase bio-availability by 2,000% for rapid muscle and brain recovery.</p>
-            <button style="margin-top:20px; background:none; border:1px solid var(--science-blue); color:var(--science-blue); padding:5px 15px; cursor:pointer;">Data Sheets</button>
-        </div>
-        <div class="glass-card">
-            <span class="formula">$ATP$ Engine</span>
-            <h3>Glycemic Control</h3>
-            <p>Complex carbohydrates fermented for 12 hours to ensure a steady release of cellular energy.</p>
-            <button style="margin-top:20px; background:none; border:1px solid var(--science-blue); color:var(--science-blue); padding:5px 15px; cursor:pointer;">Energy Stats</button>
-        </div>
-    </div>
-
-    <div class="section-header" id="menu">
-        <h2>BIO-FUEL MENU</h2>
-        <div class="divider"></div>
-    </div>
-
-    <div class="menu-box">
-        <div class="menu-row">
-            <div>
-                <span class="item-tag">BEST FOR FOCUS</span>
-                <div class="item-name">The Brain-Power Thali</div>
+        <div class="grid">
+            <div class="card">
+                <span class="formula">$C_{40}H_{56}$</span>
+                <h3>Lycopene</h3>
+                <p>Precision heated tomatoes for maximum cardiovascular protection.</p>
             </div>
-            <div class="price-tag">Rs. 2,150</div>
+            <div class="card">
+                <span class="formula">$C_{21}H_{20}O_{6}$</span>
+                <h3>Curcumin</h3>
+                <p>Paired with Piperine to increase brain-cell absorption by 2000%.</p>
+            </div>
+            <div class="card">
+                <span class="formula">ATP + Glucose</span>
+                <h3>Complex Carbs</h3>
+                <p>Slow-release energy grains for 8 hours of exam-ready focus.</p>
+            </div>
         </div>
-        <div class="menu-row">
-            <div>
-                <span class="item-tag">CELL REPAIR</span>
+    </section>
+
+    <section id="menu">
+        <div class="section-title">
+            <h2>LAB MENU</h2>
+            <div class="line"></div>
+        </div>
+        <div class="menu-list">
+            <div class="menu-item">
+                <div class="item-name">Brain-Power Thali</div>
+                <div class="price">Rs. 2,150</div>
+            </div>
+            <div class="menu-item">
                 <div class="item-name">Molecular Daal Mash</div>
+                <div class="price">Rs. 720</div>
             </div>
-            <div class="price-tag">Rs. 720</div>
-        </div>
-        <div class="menu-row">
-            <div>
-                <span class="item-tag">IMMUNITY BOOST</span>
+            <div class="menu-item">
                 <div class="item-name">Lycopene Red Karahi</div>
+                <div class="price">Rs. 1,450</div>
             </div>
-            <div class="price-tag">Rs. 1,450</div>
         </div>
-    </div>
+    </section>
 
-    <div class="section-header" id="reviews">
-        <h2>REVIEWS</h2>
-        <div class="divider"></div>
-    </div>
-
-    <div class="review-wall">
-        <div class="review-card">
-            <div class="stars">★★★★★</div>
-            <p class="quote">"Mikaeel's vision for nutrition is decades ahead. I've never felt this energetic after a meal."</p>
-            <p class="reviewer">— DR. ARSHAD, CLINICAL BIO-CHEMIST</p>
+    <section id="reviews">
+        <div class="section-title">
+            <h2>REVIEWS</h2>
+            <div class="line"></div>
         </div>
-        <div class="review-card">
-            <div class="stars">★★★★★</div>
-            <p class="quote">"The perfect blend of tradition and high-level science. The ATP grains actually work!"</p>
-            <p class="reviewer">— HAMZA ALI, PRO ATHLETE</p>
+        <div class="review">
+            <p>"The ATP grains actually worked! I felt zero brain fog during my biology finals."</p>
+            <div class="name">— ALI R., STUDENT</div>
         </div>
-        <div class="review-card">
-            <div class="stars">★★★★★</div>
-            <p class="quote">"Finally, a dhaba that doesn't make me feel sluggish. This is the future of food in Pakistan."</p>
-            <p class="reviewer">— SARA KHAN, FOOD SCIENTIST</p>
+        <div class="review">
+            <p>"High-level science in every bite. The Curcumin absorption is real."</p>
+            <div class="name">— DR. FATIMA, NUTRITIONIST</div>
         </div>
-    </div>
+        <div class="review">
+            <p>"Mikaeel is a genius. The future of Desi food is here."</p>
+            <div class="name">— HAMZA, PRO ATHLETE</div>
+        </div>
+    </section>
 
     <footer>
-        <div class="logo" style="font-size: 3rem;">DESI DHABA</div>
-        <div class="socials">
-            <a href="#">INSTAGRAM</a> • <a href="#">TWITTER</a> • <a href="#">LINKEDIN</a>
-        </div>
-        <div class="sig">M. MIKAEEL IMRAN</div>
-        <p style="color: #444; letter-spacing: 2px;">FOUNDER & CHIEF SCIENTIST</p>
-        <p style="margin-top: 50px; font-size: 0.7rem; color: #222;">© 2026 MOLECULAR GASTRONOMY DEPT. ACADEMIC PROTOTYPE.</p>
+        <p>REDEFINING TRADITION</p>
+        <div class="footer-name">M. MIKAEEL IMRAN</div>
+        <p style="font-size: 0.6rem; color: #555; letter-spacing: 2px;">© 2026 ACADEMIC PROTOTYPE</p>
     </footer>
 
 </body>
