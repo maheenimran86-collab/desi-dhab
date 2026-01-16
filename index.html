@@ -3,225 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desi Dhaba | Molecular Nutrition by M. Mikaeel Imran</title>
+    <title>Desi Dhaba | High-Performance Nutrition by M. Mikaeel Imran</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Oswald:wght@500;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --gold: #d4af37;
             --maroon: #800000;
-            --deep-black: #0f0f0f;
-            --science-green: #2ecc71;
-            --text-gray: #cccccc;
-            --glass: rgba(20, 20, 20, 0.95);
+            --obsidian: #0a0a0a;
+            --science-blue: #00d2ff;
+            --glass: rgba(255, 255, 255, 0.05);
+            --gold-gradient: linear-gradient(45deg, #d4af37, #f2d06b);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         
-        /* THE NEW DARK TEXTURED BACKGROUND */
         body { 
             font-family: 'Montserrat', sans-serif; 
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), 
-                        url('https://www.transparenttextures.com/patterns/dark-wood.png'),
-                        #0a0a0a;
+            background-color: var(--obsidian);
+            background-image: url('https://www.transparenttextures.com/patterns/black-linen-2.png');
             color: white; 
-            line-height: 1.6; 
+            overflow-x: hidden;
         }
 
-        .project-tag {
-            background: var(--gold); color: black; text-align: center;
-            padding: 12px; font-weight: 900; font-size: 12px; letter-spacing: 3px;
-            position: fixed; top: 0; width: 100%; z-index: 10000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        /* FLOATING ACTION BUTTON */
+        .fab {
+            position: fixed; bottom: 30px; right: 30px;
+            background: var(--gold-gradient); color: black;
+            padding: 20px 30px; border-radius: 50px; font-weight: 900;
+            text-transform: uppercase; text-decoration: none; z-index: 10000;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+            transition: 0.3s; cursor: pointer; border: none;
         }
+        .fab:hover { transform: scale(1.1); box-shadow: 0 15px 40px rgba(212, 175, 55, 0.6); }
 
         /* NAVIGATION */
         nav {
-            background: var(--glass); padding: 30px 10%;
+            background: rgba(10, 10, 10, 0.9); padding: 25px 8%;
             display: flex; justify-content: space-between; align-items: center;
-            position: sticky; top: 43px; z-index: 9000;
-            border-bottom: 2px solid var(--maroon);
+            position: sticky; top: 0; z-index: 9000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            backdrop-filter: blur(10px);
         }
-        .logo { font-family: 'Cinzel Decorative', cursive; font-size: 2.2rem; color: var(--gold); }
-        .mikaeel-tag { color: white; font-weight: 700; font-size: 0.8rem; border: 1px solid var(--gold); padding: 5px 15px; letter-spacing: 1px; }
+        .logo { font-family: 'Cinzel Decorative'; font-size: 1.8rem; color: var(--gold); }
+        .nav-btns a { text-decoration: none; color: white; margin-left: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; }
 
-        /* HERO SECTION */
+        /* HERO */
         .hero {
-            height: 95vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), 
-                        url('https://images.unsplash.com/photo-1585937421612-70a008356fbe?q=80&w=2000');
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=2000');
             background-size: cover; background-position: center;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; border-bottom: 5px solid var(--maroon);
+            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
         }
-        .hero h1 { font-family: 'Cinzel Decorative'; font-size: 6rem; color: white; text-shadow: 4px 4px 10px black; }
-        .hero p { font-family: 'Playfair Display'; font-size: 2rem; color: var(--gold); font-style: italic; }
+        .hero h1 { font-family: 'Cinzel Decorative'; font-size: 5.5rem; letter-spacing: 5px; margin-bottom: 10px; color: white; }
+        .hero p { font-family: 'Playfair Display'; font-size: 1.8rem; color: var(--gold); margin-bottom: 40px; }
 
-        /* HEADING STYLE */
-        .section-heading {
-            text-align: center; margin-bottom: 60px;
+        .btn-main {
+            padding: 15px 40px; background: none; border: 2px solid var(--gold);
+            color: white; font-weight: bold; text-transform: uppercase; letter-spacing: 2px;
+            cursor: pointer; transition: 0.4s; text-decoration: none;
         }
-        .section-heading h2 { 
-            font-family: 'Cinzel Decorative'; font-size: 4rem; color: var(--gold); 
-            text-transform: uppercase; letter-spacing: 5px; margin-bottom: 10px;
-        }
-        .gold-divider { width: 200px; height: 4px; background: var(--maroon); margin: 0 auto; border: 1px solid var(--gold); }
+        .btn-main:hover { background: var(--gold); color: black; }
 
-        /* THE SCIENCE SECTION */
-        section { padding: 120px 10%; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-        .science-card {
-            background: #1a1a1a; padding: 50px; border-radius: 10px;
-            border-left: 5px solid var(--maroon); box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transition: 0.3s;
+        /* SECTION HEADINGS */
+        .section-header { text-align: center; margin: 100px 0 60px; }
+        .section-header h2 { font-family: 'Cinzel Decorative'; font-size: 3.5rem; color: var(--gold); letter-spacing: 5px; }
+        .divider { width: 100px; height: 3px; background: var(--maroon); margin: 20px auto; border: 1px solid var(--gold); }
+
+        /* SCIENCE SECTION */
+        .science-container { padding: 0 10%; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .glass-card {
+            background: var(--glass); padding: 50px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px); transition: 0.3s;
         }
-        .science-card:hover { transform: translateY(-10px); background: #222; }
-        .science-card h3 { font-family: 'Oswald'; color: var(--gold); font-size: 1.8rem; margin-bottom: 15px; }
-        .science-card p { color: var(--text-gray); }
+        .glass-card:hover { border-color: var(--gold); transform: translateY(-10px); }
+        .formula { color: var(--science-blue); font-family: 'Courier New', monospace; font-weight: bold; margin-bottom: 15px; display: block; }
+        .glass-card h3 { font-family: 'Oswald'; font-size: 1.8rem; color: var(--gold); margin-bottom: 15px; }
 
         /* MENU SECTION */
-        .menu-container { background: #111; padding: 60px; border: 1px solid #333; }
-        .menu-item {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 30px 0; border-bottom: 1px solid #222;
-        }
-        .item-info h4 { font-family: 'Playfair Display'; font-size: 2rem; color: white; }
-        .item-info span { color: var(--science-green); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; }
-        .price { font-family: 'Oswald'; font-size: 1.8rem; color: var(--gold); }
+        .menu-box { margin: 0 10%; background: rgba(255,255,255,0.02); border-radius: 30px; padding: 60px; }
+        .menu-row { display: flex; justify-content: space-between; align-items: center; padding: 25px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .item-name { font-family: 'Playfair Display'; font-size: 1.8rem; }
+        .item-tag { background: rgba(0,210,255,0.1); color: var(--science-blue); padding: 4px 10px; border-radius: 5px; font-size: 0.7rem; font-weight: bold; }
+        .price-tag { font-family: 'Oswald'; font-size: 1.6rem; color: var(--gold); }
 
-        /* THE REVIEW WALL (NEW & IMPROVED) */
-        .review-wall {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
-        }
+        /* REVIEWS */
+        .review-wall { padding: 100px 10%; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
         .review-card {
-            background: #1a1a1a; padding: 40px; border-radius: 15px; position: relative;
-            border: 1px solid #333; font-family: 'Playfair Display';
+            background: #111; padding: 40px; border-radius: 15px; border-top: 4px solid var(--maroon);
         }
-        .review-card::before { content: '"'; font-size: 5rem; color: var(--maroon); position: absolute; top: 10px; left: 20px; opacity: 0.3; }
-        .review-text { font-size: 1.2rem; color: #eee; font-style: italic; position: relative; z-index: 1; }
-        .review-author { display: block; margin-top: 20px; font-family: 'Montserrat'; font-weight: 700; color: var(--gold); text-transform: uppercase; font-size: 0.8rem; }
+        .stars { color: var(--gold); margin-bottom: 15px; }
+        .quote { font-style: italic; color: #ccc; margin-bottom: 20px; }
+        .reviewer { font-weight: bold; color: var(--gold); text-transform: uppercase; font-size: 0.8rem; }
 
         /* FOOTER */
-        footer {
-            background: black; padding: 100px 10%; text-align: center; border-top: 2px solid var(--maroon);
-        }
-        .footer-logo { font-family: 'Cinzel Decorative'; font-size: 3rem; color: var(--gold); margin-bottom: 10px; }
-        .signature { font-size: 2.5rem; font-family: 'Cinzel Decorative'; color: white; margin-top: 30px; letter-spacing: 5px; }
+        footer { background: #050505; padding: 80px 10%; text-align: center; border-top: 1px solid var(--gold); }
+        .sig { font-family: 'Cinzel Decorative'; font-size: 2.5rem; color: white; margin: 30px 0; letter-spacing: 10px; }
+        .socials a { color: var(--gold); margin: 0 15px; font-size: 1.2rem; text-decoration: none; font-weight: bold; }
+
     </style>
 </head>
 <body>
 
-    <div class="project-tag">SCIENCE EXPERIMENT // MOLECULAR NUTRITION CASE STUDY // 2026</div>
+    <button class="fab" onclick="alert('Table Reserved for M. Mikaeel Imran!')">Book a Table</button>
 
     <nav>
         <div class="logo">DESI DHABA</div>
-        <div class="mikaeel-tag">CHEF SCIENTIST: M. MIKAEEL IMRAN</div>
+        <div class="nav-btns">
+            <a href="#science">Lab</a>
+            <a href="#menu">Menu</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#" style="background: var(--gold); color: black; padding: 10px 20px; border-radius: 5px;">Founder</a>
+        </div>
     </nav>
 
     <header class="hero">
-        <p>TRADITION x BIO-CHEMISTRY</p>
+        <p>A MASTERPIECE BY M. MIKAEEL IMRAN</p>
         <h1>ULTRA-FUEL</h1>
-        <p>Molecular Comfort. Cellular Energy.</p>
+        <p>Molecular Excellence. Ancestral Taste.</p>
+        <div>
+            <a href="#menu" class="btn-main">View The Formulas</a>
+            <a href="#" class="btn-main" style="margin-left: 20px; background: white; color: black;">Download Lab Report</a>
+        </div>
     </header>
 
-    <section id="science">
-        <div class="section-heading">
-            <h2>THE BIOLOGY</h2>
-            <div class="gold-divider"></div>
-        </div>
-        <div class="grid">
-            <div class="science-card">
-                <h3>ATP SYNTHESIS</h3>
-                <p>Our slow-fermented grains provide complex carbohydrates that ensure a steady glucose release, fueling the <b>ATP (Adenosine Triphosphate)</b> production in your mitochondria.</p>
-            </div>
-            <div class="science-card">
-                <h3>BIO-AVAILABILITY</h3>
-                <p>By pairing organic Turmeric with Black Pepper (Piperine), we increase the absorption of <b>Curcumin</b> by 2,000%, fighting inflammation at a DNA level.</p>
-            </div>
-            <div class="science-card">
-                <h3>LIPID FUEL</h3>
-                <p>We use <b>MCT (Medium Chain Triglycerides)</b> found in Desi Ghee to provide immediate energy for neural pathways, enhancing cognitive focus.</p>
-            </div>
-        </div>
-    </section>
+    <div class="section-header" id="science">
+        <h2>THE LABORATORY</h2>
+        <div class="divider"></div>
+        <p>Where bio-chemistry meets the tandoor.</p>
+    </div>
 
-    <section id="menu" style="background: rgba(255,255,255,0.02);">
-        <div class="section-heading">
-            <h2>THE LAB MENU</h2>
-            <div class="gold-divider"></div>
+    <div class="science-container">
+        <div class="glass-card">
+            <span class="formula">$C_{40}H_{56}$</span>
+            <h3>Lycopene Infusion</h3>
+            <p>Our tomatoes are slow-oxidized to release peak antioxidant levels for heart-cell resilience.</p>
+            <button style="margin-top:20px; background:none; border:1px solid var(--science-blue); color:var(--science-blue); padding:5px 15px; cursor:pointer;">Analysis Report</button>
         </div>
-        <div class="menu-container">
-            <div class="menu-item">
-                <div class="item-info">
-                    <span>BIO-FUEL COMBO</span>
-                    <h4>The Brain-Power Thali</h4>
-                </div>
-                <div class="price">Rs. 1,950</div>
-            </div>
-            <div class="menu-item">
-                <div class="item-info">
-                    <span>CELLULAR REPAIR</span>
-                    <h4>Molecular Daal Mash</h4>
-                </div>
-                <div class="price">Rs. 650</div>
-            </div>
-            <div class="menu-item">
-                <div class="item-info">
-                    <span>OXIDATION SHIELD</span>
-                    <h4>Lycopene Red Karahi</h4>
-                </div>
-                <div class="price">Rs. 1,200</div>
-            </div>
-            <div class="menu-item">
-                <div class="item-info">
-                    <span>MICROBIOME SUPPORT</span>
-                    <h4>Probiotic Laban</h4>
-                </div>
-                <div class="price">Rs. 450</div>
-            </div>
+        <div class="glass-card">
+            <span class="formula">$C_{21}H_{20}O_{6}$</span>
+            <h3>Neural Curcumin</h3>
+            <p>Paired with Piperine to increase bio-availability by 2,000% for rapid muscle and brain recovery.</p>
+            <button style="margin-top:20px; background:none; border:1px solid var(--science-blue); color:var(--science-blue); padding:5px 15px; cursor:pointer;">Data Sheets</button>
         </div>
-    </section>
+        <div class="glass-card">
+            <span class="formula">$ATP$ Engine</span>
+            <h3>Glycemic Control</h3>
+            <p>Complex carbohydrates fermented for 12 hours to ensure a steady release of cellular energy.</p>
+            <button style="margin-top:20px; background:none; border:1px solid var(--science-blue); color:var(--science-blue); padding:5px 15px; cursor:pointer;">Energy Stats</button>
+        </div>
+    </div>
 
-    <section id="reviews">
-        <div class="section-heading">
-            <h2>WALL OF REVIEWS</h2>
-            <div class="gold-divider"></div>
+    <div class="section-header" id="menu">
+        <h2>BIO-FUEL MENU</h2>
+        <div class="divider"></div>
+    </div>
+
+    <div class="menu-box">
+        <div class="menu-row">
+            <div>
+                <span class="item-tag">BEST FOR FOCUS</span>
+                <div class="item-name">The Brain-Power Thali</div>
+            </div>
+            <div class="price-tag">Rs. 2,150</div>
         </div>
-        <div class="review-wall">
-            <div class="review-card">
-                <p class="review-text">"The ATP Grains are incredible. I had 8 hours of focus for my Science exam without a single caffeine crash. This is pure fuel."</p>
-                <span class="review-author">— ALI R., GRADE 10 STUDENT</span>
+        <div class="menu-row">
+            <div>
+                <span class="item-tag">CELL REPAIR</span>
+                <div class="item-name">Molecular Daal Mash</div>
             </div>
-            <div class="review-card">
-                <p class="review-text">"As a nutritionist, I’m shocked by the bio-availability of the Curcumin in their Daal. Truly molecular cooking."</p>
-                <span class="review-author">— DR. FATIMA, DIETICIAN</span>
-            </div>
-            <div class="review-card">
-                <p class="review-text">"The best Dhaba experience in the city. You can feel the energy in your body 20 minutes after eating. M. Mikaeel Imran is a genius."</p>
-                <span class="review-author">— HAMZA KHAN, ATHLETE</span>
-            </div>
-            <div class="review-card">
-                <p class="review-text">"Finally, a place that values science over shortcuts. Every calorie here is calculated for performance."</p>
-                <span class="review-author">— SARA J., FITNESS COACH</span>
-            </div>
-            <div class="review-card">
-                <p class="review-text">"The Lycopene Karahi is a game changer for skin health and cell recovery. 10/10 science!"</p>
-                <span class="review-author">— PROF. USMAN, BIO-CHEMIST</span>
-            </div>
-            <div class="review-card">
-                <p class="review-text">"Mikaeel's vision for a high-performance Dhaba is exactly what our generation needs."</p>
-                <span class="review-author">— ZAINAB M., FOOD CRITIC</span>
-            </div>
+            <div class="price-tag">Rs. 720</div>
         </div>
-    </section>
+        <div class="menu-row">
+            <div>
+                <span class="item-tag">IMMUNITY BOOST</span>
+                <div class="item-name">Lycopene Red Karahi</div>
+            </div>
+            <div class="price-tag">Rs. 1,450</div>
+        </div>
+    </div>
+
+    <div class="section-header" id="reviews">
+        <h2>REVIEWS</h2>
+        <div class="divider"></div>
+    </div>
+
+    <div class="review-wall">
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p class="quote">"Mikaeel's vision for nutrition is decades ahead. I've never felt this energetic after a meal."</p>
+            <p class="reviewer">— DR. ARSHAD, CLINICAL BIO-CHEMIST</p>
+        </div>
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p class="quote">"The perfect blend of tradition and high-level science. The ATP grains actually work!"</p>
+            <p class="reviewer">— HAMZA ALI, PRO ATHLETE</p>
+        </div>
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p class="quote">"Finally, a dhaba that doesn't make me feel sluggish. This is the future of food in Pakistan."</p>
+            <p class="reviewer">— SARA KHAN, FOOD SCIENTIST</p>
+        </div>
+    </div>
 
     <footer>
-        <div class="footer-logo">DESI DHABA</div>
-        <p>TRADITION RE-ENGINEERED FOR THE FUTURE</p>
-        <div class="signature">M. MIKAEEL IMRAN</div>
-        <p style="margin-top: 50px; font-size: 0.7rem; color: #444; letter-spacing: 2px;">
-            PROJECT FOR SCHOOL BIOLOGY // NOT A REAL RESTAURANT // © 2026
-        </p>
+        <div class="logo" style="font-size: 3rem;">DESI DHABA</div>
+        <div class="socials">
+            <a href="#">INSTAGRAM</a> • <a href="#">TWITTER</a> • <a href="#">LINKEDIN</a>
+        </div>
+        <div class="sig">M. MIKAEEL IMRAN</div>
+        <p style="color: #444; letter-spacing: 2px;">FOUNDER & CHIEF SCIENTIST</p>
+        <p style="margin-top: 50px; font-size: 0.7rem; color: #222;">© 2026 MOLECULAR GASTRONOMY DEPT. ACADEMIC PROTOTYPE.</p>
     </footer>
 
 </body>
