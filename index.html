@@ -3,219 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desi Dhaba | Molecular Nutrition</title>
+    <title>Desi Dhaba | High-Performance Bio-Nutrition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@300;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --accent-gold: #d4af37;
-            --deep-maroon: #5d1010;
-            --clay-orange: #d35400;
-            --cream: #fff9f1;
-            --science-green: #2ecc71;
-            --dark-text: #2c3e50;
+            --gold: #d4af37;
+            --maroon: #4a0404;
+            --charcoal: #1a1a1a;
+            --cream: #fffaf0;
+            --science-blue: #3498db;
+            --success: #27ae60;
         }
 
-        * { box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            background-color: var(--cream);
-            color: var(--dark-text);
-            scroll-behavior: smooth;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Montserrat', sans-serif; background: var(--cream); color: #333; line-height: 1.8; overflow-x: hidden; }
 
-        /* Disclaimer - School Project Tag */
-        .disclaimer {
-            background: #ffeb3b;
-            color: #000;
+        /* Project Tag */
+        .status-bar {
+            background: #ffcc00;
+            color: black;
+            font-size: 10px;
+            font-weight: 900;
             text-align: center;
-            padding: 12px;
-            font-weight: bold;
-            font-size: 0.8rem;
+            padding: 8px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             position: sticky;
             top: 0;
-            z-index: 3000;
-            border-bottom: 2px solid #fbc02d;
+            z-index: 9999;
         }
 
-        /* Header */
-        nav {
-            background: #fff;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .logo { font-size: 1.8rem; font-weight: 900; color: var(--deep-maroon); letter-spacing: 2px; }
+        /* Nav */
+        nav { background: white; padding: 25px; display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--maroon); }
+        .logo { font-family: 'Cinzel', serif; font-size: 1.8rem; color: var(--maroon); }
 
         /* Hero */
         .hero {
-            height: 80vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('https://images.unsplash.com/photo-1512132411229-c30391241dd8?q=80&w=1000');
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1541544741938-0af808871cc0?q=80&w=2000');
             background-size: cover;
             background-position: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            color: white;
             text-align: center;
+            color: white;
             padding: 20px;
         }
-        .hero h1 { font-size: 3.5rem; margin: 0; }
-        .hero p { font-size: 1.2rem; color: var(--accent-gold); margin-bottom: 25px; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 4rem; margin-bottom: 10px; }
+        .hero p { font-size: 1.2rem; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; }
 
-        /* Section Styling */
-        section { padding: 80px 20px; max-width: 1000px; margin: auto; }
-        .section-title { text-align: center; color: var(--deep-maroon); font-size: 2.2rem; margin-bottom: 10px; }
-        .section-subtitle { text-align: center; display: block; margin-bottom: 50px; font-style: italic; color: #777; }
+        /* Sections */
+        section { padding: 100px 20px; max-width: 1200px; margin: auto; }
+        .title-block { text-align: center; margin-bottom: 60px; }
+        .title-block h2 { font-family: 'Cinzel', serif; font-size: 2.5rem; color: var(--maroon); }
+        .title-block .divider { width: 80px; height: 4px; background: var(--gold); margin: 20px auto; }
 
-        /* Science Cards Grid */
-        .grid { display: grid; grid-template-columns: 1fr; gap: 25px; }
-        @media (min-width: 768px) { .grid { grid-template-columns: 1fr 1fr; } }
+        /* Info Cards */
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .info-card { background: white; padding: 40px; border-radius: 5px; box-shadow: 0 15px 40px rgba(0,0,0,0.05); border-top: 5px solid var(--maroon); transition: 0.3s; }
+        .info-card:hover { transform: translateY(-10px); }
+        .info-card h3 { color: var(--maroon); margin-bottom: 15px; }
+        .label { font-weight: bold; font-size: 0.7rem; color: var(--success); text-transform: uppercase; }
 
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border-top: 4px solid var(--accent-gold);
-        }
-        .science-tag { color: var(--science-green); font-weight: bold; font-size: 0.8rem; text-transform: uppercase; }
+        /* Menu */
+        .menu-container { background: white; border-radius: 10px; padding: 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+        .menu-row { display: flex; justify-content: space-between; align-items: center; padding: 25px 0; border-bottom: 1px solid #eee; }
+        .menu-name { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: bold; }
+        .menu-science { display: block; font-size: 0.8rem; color: var(--science-blue); font-weight: 600; text-transform: uppercase; }
+        .menu-price { color: var(--maroon); font-weight: 900; font-size: 1.3rem; }
 
-        /* Menu Section */
-        .menu-category { margin-top: 40px; border-bottom: 2px solid var(--deep-maroon); padding-bottom: 10px; }
-        .menu-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-            border-bottom: 1px dashed #ddd;
-        }
-        .item-info { flex: 1; }
-        .item-name { font-weight: bold; font-size: 1.1rem; display: block; }
-        .item-science { font-size: 0.8rem; color: var(--science-green); font-style: italic; }
-        .price { font-weight: bold; color: var(--clay-orange); margin-left: 20px; }
+        /* Stats Box */
+        .stats { background: var(--charcoal); color: white; padding: 80px 20px; text-align: center; margin-top: 50px; }
+        .stat-item { display: inline-block; margin: 20px 50px; }
+        .stat-num { display: block; font-size: 3rem; color: var(--gold); font-weight: bold; }
 
-        /* Testimonials */
-        .testimonial {
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            font-style: italic;
-            border-left: 4px solid var(--deep-maroon);
-        }
+        /* Footer */
+        footer { background: #000; color: #555; padding: 80px 20px; text-align: center; }
+        .footer-logo { color: white; font-family: 'Cinzel', serif; font-size: 2rem; margin-bottom: 20px; }
 
-        /* Dark Info Box */
-        .dark-box {
-            background: var(--deep-maroon);
-            color: white;
-            text-align: center;
-            padding: 60px 20px;
-            margin: 40px 0;
-        }
-
-        footer {
-            background: #111;
-            color: #777;
-            padding: 60px 20px;
-            text-align: center;
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .stat-item { margin: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="disclaimer">⚠️ SCHOOL ASSIGNMENT: FICTIONAL PROJECT ONLY</div>
+    <div class="status-bar">Academic Prototype: Science Lab #402 - Desi Dhaba Project</div>
 
-    <nav><div class="logo">DESI DHABA</div></nav>
+    <nav>
+        <div class="logo">DESI DHABA</div>
+    </nav>
 
-    <header class="hero">
-        <h1>DESI DHABA</h1>
-        <p>Flavor That Hugs Your Soul, Science That Fuels Your Goal!</p>
-        <a href="#menu" style="color:white; border:2px solid white; padding:12px 30px; text-decoration:none; font-weight:bold;">EXPLORE MENU</a>
-    </header>
+    <div class="hero">
+        <h1>Molecular Fuel.</h1>
+        <p>Real Spice • Real Science • Real Power</p>
+    </div>
 
-    <section id="science">
-        <h2 class="section-title">The Science Lab</h2>
-        <span class="section-subtitle">How our chemistry creates your energy.</span>
-        <div class="grid">
-            <div class="card">
-                <span class="science-tag">Antioxidant Research</span>
-                <h3>Lycopene Stability</h3>
-                <p>Our slow-simmered tomato bases release <b>Lycopene</b>, which protects cells and keeps your heart healthy.</p>
+    <section id="mission">
+        <div class="title-block">
+            <h2>The Lab Philosophy</h2>
+            <div class="divider"></div>
+            <p>At Desi Dhaba, we optimize the <strong>Bio-Availability</strong> of traditional ingredients to fuel the modern human.</p>
+        </div>
+        
+        <div class="info-grid">
+            <div class="info-card">
+                <span class="label">Oxidative Stress Control</span>
+                <h3>Lycopene Infusion</h3>
+                <p>By slow-roasting organic tomatoes, we unlock <b>Lycopene</b>, a powerful antioxidant that protects cellular DNA from free radical damage.</p>
             </div>
-            <div class="card">
-                <span class="science-tag">Macronutrients</span>
-                <h3>ATP Generation</h3>
-                <p>Our whole-wheat rotis provide <b>Complex Carbohydrates</b> that break down into <b>Glucose</b> for long-term energy.</p>
+            <div class="info-card">
+                <span class="label">Neural Optimization</span>
+                <h3>Lipid Dynamics</h3>
+                <p>Our clarified butter (Ghee) and nuts provide <b>Essential Fatty Acids</b>. 60% of your brain is fat—we ensure it's the right kind.</p>
+            </div>
+            <div class="info-card">
+                <span class="label">Sustained Glycemic Index</span>
+                <h3>ATP Parathas</h3>
+                <p>Hand-milled grains provide <b>Complex Carbohydrates</b>, ensuring a steady release of glucose into the bloodstream for 6+ hours of focus.</p>
             </div>
         </div>
     </section>
 
-    <div class="dark-box">
-        <h2>"Precision Cooking. Molecular Taste."</h2>
-        <p>We preserve the enzymes that others destroy with high-heat processing.</p>
+    
+
+    <div class="stats">
+        <div class="stat-item">
+            <span class="stat-num">100%</span>
+            <span>Organic Nutrients</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-num">0%</span>
+            <span>Processed Sugars</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-num">24k</span>
+            <span>Micronutrients Per Bowl</span>
+        </div>
     </div>
 
     <section id="menu">
-        <h2 class="section-title">Nutritional Menu</h2>
-        <span class="section-subtitle">Bio-Fuel for your system.</span>
-
-        <h3 class="menu-category">Main Course</h3>
-        <div class="menu-item">
-            <div class="item-info">
-                <span class="item-name">The Bio-Fuel Thali</span>
-                <span class="item-science">Balanced Amino Acids & Iron</span>
-            </div>
-            <span class="price">Rs. 450</span>
+        <div class="title-block">
+            <h2>The Bio-Fuel Menu</h2>
+            <div class="divider"></div>
         </div>
 
-        <div class="menu-item">
-            <div class="item-info">
-                <span class="item-name">Retinol Curry Pot</span>
-                <span class="item-science">Vitamin A (Vision Support)</span>
+        <div class="menu-container">
+            <div class="menu-row">
+                <div>
+                    <span class="menu-name">The Brain-Power Thali</span>
+                    <span class="menu-science">Omega-3, Iron, & Complex ATP Grains</span>
+                </div>
+                <div class="menu-price">Rs. 950</div>
             </div>
-            <span class="price">Rs. 320</span>
-        </div>
 
-        <h3 class="menu-category">Sides & Grains</h3>
-        <div class="menu-item">
-            <div class="item-info">
-                <span class="item-name">Whole-Wheat ATP Roti</span>
-                <span class="item-science">Complex Carbs (Steady Glucose)</span>
+            <div class="menu-row">
+                <div>
+                    <span class="menu-name">Curcumin Cell-Repair Daal</span>
+                    <span class="menu-science">High-Absorption Turmeric & Fiber</span>
+                </div>
+                <div class="menu-price">Rs. 420</div>
             </div>
-            <span class="price">Rs. 40</span>
-        </div>
 
-        <div class="menu-item">
-            <div class="item-info">
-                <span class="item-name">Probiotic Lassi</span>
-                <span class="item-science">Good Bacteria for Gut Health</span>
+            <div class="menu-row">
+                <div>
+                    <span class="menu-name">Retinol Green Karahi</span>
+                    <span class="menu-science">Vitamin A & Spinach-Derived Minerals</span>
+                </div>
+                <div class="menu-price">Rs. 680</div>
             </div>
-            <span class="price">Rs. 180</span>
+
+            <div class="menu-row">
+                <div>
+                    <span class="menu-name">Microbiome Lassi</span>
+                    <span class="menu-science">Probiotics & Electrolyte Balance</span>
+                </div>
+                <div class="menu-price">Rs. 240</div>
+            </div>
         </div>
     </section>
 
-    <section style="background: rgba(0,0,0,0.03); border-radius: 20px;">
-        <h2 class="section-title">Community Feedback</h2>
-        <div class="testimonial">
-            "I used to feel tired after lunch. After switching to Desi Dhaba's Bio-Fuel, my concentration in science class is 100%!" - <strong>Student A.</strong>
-        </div>
-        <div class="testimonial">
-            "The best way to get your daily Iron and Vitamin C without eating boring food." - <strong>Health Coach.</strong>
-        </div>
-    </section>
+    
 
-    <section style="text-align: center;">
-        <h2 class="section-title">Visit the Lab</h2>
-        <p><strong>Dhaba Location:</strong> Science Project Lane, Sector 7</p>
-        <p><strong>Energy Hours:</strong> 8:00 AM - 4:00 PM (Monday to Friday)</p>
+    <section id="process">
+        <div class="title-block">
+            <h2>Handmade Science</h2>
+            <p>Our process avoids high-temperature denaturing of essential proteins.</p>
+        </div>
+        <div style="text-align: center; font-style: italic;">
+            "We treat our kitchen like a laboratory, and our recipes like formulas."
+        </div>
     </section>
 
     <footer>
-        <p><strong>DESI DHABA PROJECT</strong></p>
-        <p>Designed for the Science of Nutrition Assignment</p>
-        <p style="font-size: 0.7rem; color: #444; margin-top: 30px;">This is a mock-up website. Desi Dhaba is not a real restaurant and is part of a 2-mark student project.</p>
+        <div class="footer-logo">DESI DHABA</div>
+        <p>Flavor That Hugs Your Soul, Science That Fuels Your Goal!</p>
+        <p style="margin-top: 40px; font-size: 0.7rem;">
+            This is a school science project assignment. No real food is sold. <br>
+            Grade 9 Biology: Nutrition and Metabolism Unit.
+        </p>
     </footer>
 
 </body>
