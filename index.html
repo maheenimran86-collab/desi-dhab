@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desi Dhaba | Molecular Revolution</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .hero-gradient {
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1585932231552-2987715d54f7?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+        }
+        .molecule-pattern {
+            background-image: radial-gradient(circle at 1px 1px, rgba(255,215,0,0.08) 1px, transparent 0);
+            background-size: 30px 30px;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        @keyframes pulse-gold {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        .animate-pulse-gold {
+            animation: pulse-gold 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@19.0.0",
+        "react-dom": "https://esm.sh/react-dom@19.0.0",
+        "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+        "lucide-react": "https://esm.sh/lucide-react@0.460.0",
+        "htm": "https://esm.sh/htm@3.1.1"
+      }
+    }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-900">
+    <div id="root"></div>
+
+    <script type="module">
+        import React, { useState, useEffect } from 'react';
+        import { createRoot } from 'react-dom/client';
+        import htm from 'htm';
+        import { 
+            Beaker, Flame, Brain, Microscope, ChevronRight, 
+            ShieldCheck, Menu as MenuIcon, X, Dna, Zap, 
+            ChevronDown, CreditCard, FlaskConical, Thermometer 
+        } from 'lucide-react';
+
+        const html = htm.bind(React.createElement);
+
+        const ActionButton = ({ variant = 'primary', children, onClick, className = '' }) => {
+            const base = "px-6 py-3 rounded-full font-semibold transition-all duration-300 flex items-center justify-center gap-2 transform hover:scale-105 active:scale-95 shadow-lg";
+            const styles = {
+                primary: "bg-[#8B0000] text-white hover:bg-[#A52A2A]",
+                secondary: "bg-[#FFD700] text-[#8B0000] hover:bg-[#FFC000]",
+                outline: "border-2 border-[#8B0000] text-[#8B0000] hover:bg-[#8B0000] hover:text-white"
+            };
+            return html`
+                <button onClick=${onClick} className="${base} ${styles[variant]} ${className}">
+                    ${children}
+                </button>
+            `;
+        };
+
+        const Section = ({ title, subtitle, children, id, dark = false }) => html`
+            <section id=${id} className="py-20 px-4 relative ${dark ? 'bg-[#121212] text-white' : 'bg-white'}">
+                ${dark && html`<div className="absolute inset-0 molecule-pattern pointer-events-none opacity-40"></div>`}
+                <div className="max-w-6xl mx-auto relative z-10">
+                    <div className="text-center mb-16">
+                        <h2 className="text-4xl md:text-6xl font-bold mb-4 ${dark ? 'text-[#FFD700]' : 'text-[#8B0000]'}">${title}</h2>
+                        ${subtitle && html`<p className="text-lg opacity-80 max-w-2xl mx-auto font-light leading-relaxed">${subtitle}</p>`}
+                        <div className="h-1.5 w-32 mx-auto mt-8 rounded-full ${dark ? 'bg-[#FFD700]' : 'bg-[#8B0000]'}"></div>
+                    </div>
+                    ${children}
+                </div>
+            </section>
+        `;
+
+        const App = () => {
+            const [isScrolled, setIsScrolled] = useState(false);
+
+            useEffect(() => {
+                const handleScroll = () => setIsScrolled(window.scrollY > 50);
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            const menuItems = [
+                {
+                    title: "Lycopene Red Karahi",
+                    science: "Thermal Activation: 82.0°C Precisely",
+                    benefit: "Thermally activated to protect cardiovascular health by optimizing bio-available antioxidant release.",
+                    image: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&q=80&w=800",
+                    tag: "Cardio-Optimized",
+                    price: "Rs. 2,850"
+                },
+                {
+                    title: "Brain Power Thali",
+                    science: "MCT + Complex Grain Synergy",
+                    benefit: "Medium-chain triglycerides paired with complex grains for a steady 8-hour release of ATP for cognitive focus.",
+                    image: "https://images.unsplash.com/photo-1546833998-877b37c2e5c6?auto=format&fit=crop&q=80&w=800",
+                    tag: "Neuro-Fuel",
+                    price: "Rs. 3,400"
+                },
+                {
+                    title: "Bioavailable Turmeric Shots",
+                    science: "Curcumin/Piperine (2000:1)",
+                    benefit: "Engineered molecular pairing that increases organic curcumin absorption by 2,000% for maximum recovery.",
+                    image: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&q=80&w=800",
+                    tag: "Bio-Absorption Max",
+                    price: "Rs. 950"
+                }
+            ];
+
+            return html`
+                <div className="min-h-screen">
+                    <div className="bg-[#8B0000] text-white text-[10px] md:text-xs text-center py-2 px-4 uppercase tracking-[0.2em] fixed w-full z-[100] font-semibold border-b border-white/10">
+                        Disclaimer: This is a fake website created only for educational purposes as part of a science project.
+                    </div>
+
+                    <nav className="fixed w-full z-[90] transition-all duration-500 mt-8 md:mt-10 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-2xl py-3' : 'bg-transparent py-6'}">
+                        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+                            <div className="flex items-center gap-3">
+                                <div className="bg-[#8B0000] p-2.5 rounded-xl shadow-lg transform group hover:rotate-6 transition-transform">
+                                    <${FlaskConical} className="text-[#FFD700] w-6 h-6" />
+                                </div>
+                                <div className="flex flex-col">
+                                    <span className="text-2xl font-black leading-none tracking-tighter ${isScrolled ? 'text-[#8B0000]' : 'text-white'}">
+                                        DESI DHABA
+                                    </span>
+                                    <span className="text-[9px] tracking-[0.3em] uppercase font-bold ${isScrolled ? 'text-slate-500' : 'text-slate-300'}">
+                                        Molecular Revolution
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div className="hidden md:flex items-center gap-10 font-semibold uppercase text-xs tracking-widest">
+                                ${['The Lab', 'Menu', 'Technology', 'Founder'].map((item) => html`
+                                    <a key=${item} href="#${item.toLowerCase().replace(' ', '-')}"
+                                       className="transition-colors hover:text-[#FFD700] ${isScrolled ? 'text-slate-700' : 'text-white'}">
+                                        ${item}
+                                    </a>
+                                `)}
+                                <${ActionButton} variant="secondary" className="!py-2 !px-6 !text-[10px] !tracking-widest">
+                                    LAB RESULTS
+                                </${ActionButton}>
+                            </div>
+                        </div>
+                    </nav>
+
+                    <section className="relative h-screen flex items-center justify-center text-white hero-gradient overflow-hidden">
+                        <div className="absolute inset-0 molecule-pattern pointer-events-none"></div>
+                        <div className="relative z-10 text-center px-6 max-w-5xl">
+                            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-[#FFD700]/40 bg-[#FFD700]/10 text-[#FFD700] mb-10 animate-pulse-gold">
+                                <${Zap} size=${18} />
+                                <span className="text-[10px] font-black uppercase tracking-[0.3em]">Biological Performance Optimized</span>
+                            </div>
+                            <h1 className="text-6xl md:text-9xl font-bold mb-8 tracking-tight leading-[0.9]">
+                                REAL SPICE.<br/>
+                                <span className="text-[#FFD700]">REAL SCIENCE.</span>
+                            </h1>
+                            <p className="text-xl md:text-3xl mb-14 opacity-90 font-light max-w-3xl mx-auto leading-relaxed italic">
+                                "Desi Dhaba: Real spice, real science, real power."
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                                <${ActionButton} variant="secondary" className="w-full sm:w-auto px-10 py-5">
+                                    Order for Performance <${CreditCard} size=${20} />
+                                </${ActionButton}>
+                                <${ActionButton} variant="outline" className="w-full sm:w-auto px-10 py-5 !text-white !border-white/40 hover:!bg-white hover:!text-[#8B0000]">
+                                    Learn the Chemistry
+                                </${ActionButton}>
+                            </div>
+                        </div>
+                        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-40">
+                            <${ChevronDown} size=${40} />
+                        </div>
+                    </section>
+
+                    <${Section} id="the-lab" title="The Laboratory Protocol" subtitle="We apply rigorous scientific methodologies to traditional Desi culinary arts to enhance bioavailability and human performance.">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-16">
+                            ${[
+                                { icon: Dna, title: "DNA-Level Nutrition", desc: "Formulas designed to interact with metabolic signaling pathways for cellular longevity." },
+                                { icon: Thermometer, title: "Precision Activation", desc: "Utilizing induction thermal mapping to ensure active compounds are never degraded by heat." },
+                                { icon: Beaker, title: "Molecular Synergy", desc: "Averaging a 450% increase in nutrient uptake through optimized chemical pairings." }
+                            ].map((f, i) => html`
+                                <div key=${i} className="bg-slate-50 p-10 rounded-[2.5rem] border border-slate-200 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group">
+                                    <div className="bg-white p-5 rounded-2xl w-fit shadow-md mb-8 text-[#8B0000] group-hover:scale-110 transition-transform">
+                                        <${f.icon} />
+                                    </div>
+                                    <h3 className="text-2xl font-bold mb-4 text-slate-800">${f.title}</h3>
+                                    <p className="text-slate-600 leading-relaxed font-light">${f.desc}</p>
+                                </div>
+                            `)}
+                        </div>
+                    </${Section}>
+
+                    <${Section} id="menu" title="Optimized Menu" subtitle="Every serving is a measured dose of biological excellence." dark=${true}>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                            ${menuItems.map((item, i) => html`
+                                <div key=${i} className="group relative bg-[#1E1E1E] rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl flex flex-col">
+                                    <div className="h-72 overflow-hidden relative">
+                                        <img src=${item.image} alt=${item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 opacity-70" />
+                                        <div className="absolute top-6 right-6 bg-[#FFD700] text-[#8B0000] px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-tighter shadow-lg">
+                                            ${item.tag}
+                                        </div>
+                                        <div className="absolute bottom-6 left-6 bg-[#8B0000] text-white px-5 py-2 rounded-2xl text-xl font-bold mono shadow-2xl border border-white/10">
+                                            ${item.price}
+                                        </div>
+                                    </div>
+                                    <div className="p-10 flex-grow flex flex-col">
+                                        <h3 className="text-3xl font-bold mb-3 text-[#FFD700]">${item.title}</h3>
+                                        <div className="flex items-center gap-2 mb-6 text-[#FFD700]/60">
+                                            <${Microscope} size=${16} />
+                                            <span className="text-[11px] uppercase tracking-[0.2em] font-bold mono">${item.science}</span>
+                                        </div>
+                                        <p className="text-slate-300 font-light leading-relaxed mb-8 flex-grow">
+                                            ${item.benefit}
+                                        </p>
+                                        <div className="space-y-4">
+                                            <${ActionButton} variant="secondary" className="w-full !py-4">
+                                                Order Bio-Fuel
+                                            </${ActionButton}>
+                                            <button className="w-full text-[#FFD700] text-xs font-bold uppercase tracking-widest hover:underline transition-all">
+                                                View Lab Report
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            `)}
+                        </div>
+                    </${Section}>
+
+                    <${Section} id="technology" title="Operational Intelligence" subtitle="The commercial interface of the molecular revolution.">
+                        <div className="relative max-w-5xl mx-auto rounded-[3rem] overflow-hidden shadow-[0_20px_50px_rgba(139,0,0,0.3)] border-[8px] border-white aspect-video">
+                           <iframe className="w-full h-full" src="https://www.youtube.com/embed/2AW4tEh4Axk" title="Desi Dhaba Commercial" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                        </div>
+                    </${Section}>
+
+                    <section id="founder" className="py-24 bg-[#0A0A0A] text-white relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#8B0000] opacity-5 blur-[120px] rounded-full -mr-[400px]"></div>
+                        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-20">
+                            <div className="md:w-1/2 relative">
+                                <div className="w-full aspect-[4/5] rounded-[3rem] overflow-hidden border-2 border-[#FFD700]/20 shadow-2xl relative">
+                                    <img src="https://picsum.photos/800/1000?seed=scientist" alt="M. Mikaeel Imran" className="w-full h-full object-cover grayscale contrast-125" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent"></div>
+                                </div>
+                                <div className="absolute -bottom-8 -right-8 glass-panel p-8 rounded-[2rem] shadow-2xl border border-white/20">
+                                    <p className="text-[10px] font-black uppercase tracking-[0.4em] text-[#FFD700] mb-2 leading-none">Visionary Architect</p>
+                                    <h4 className="text-3xl font-bold text-white">M. Mikaeel Imran</h4>
+                                </div>
+                            </div>
+                            <div className="md:w-1/2">
+                                <div className="bg-[#8B0000] w-16 h-1 mb-10"></div>
+                                <h2 className="text-5xl md:text-7xl font-bold mb-10 text-white">Revolutionizing<br/><span className="text-[#FFD700]">The Human Fuel.</span></h2>
+                                <p className="text-2xl text-slate-400 font-light leading-relaxed mb-10 italic">
+                                    "Traditional Desi food is naturally packed with performance-enhancing compounds. We simply used modern molecular biology to unlock them. Desi Dhaba isn't just about taste; it's about the evolution of the human machine."
+                                </p>
+                                <div className="flex items-center gap-6">
+                                    <div className="p-4 rounded-full border border-white/10">
+                                        <${Microscope} className="text-[#FFD700]" size=${24} />
+                                    </div>
+                                    <div>
+                                        <p className="font-bold text-lg text-white">Chief Scientist & Founder</p>
+                                        <p className="text-slate-500 text-sm">Strategic Performance Division</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <footer className="bg-white pt-24 pb-12">
+                        <div className="max-w-6xl mx-auto px-6">
+                            <div className="flex flex-col md:flex-row justify-between items-start gap-16 mb-24">
+                                <div className="max-w-md">
+                                    <div className="flex items-center gap-3 mb-8">
+                                        <${Beaker} className="text-[#8B0000] w-10 h-10" />
+                                        <span className="text-3xl font-black text-[#8B0000] tracking-tighter">DESI DHABA</span>
+                                    </div>
+                                    <p className="text-slate-500 text-lg font-light leading-relaxed mb-8">
+                                        The global leader in bio-optimized Desi cuisine. Merging thousands of years of spice heritage with 21st-century molecular engineering.
+                                    </p>
+                                    <div className="flex gap-4">
+                                        <${ActionButton} className="!py-3 !px-8">Contact the Lab</${ActionButton}>
+                                    </div>
+                                </div>
+                                <div className="grid grid-cols-2 gap-20">
+                                    <div>
+                                        <h4 className="font-black mb-8 uppercase tracking-[0.2em] text-xs text-slate-800">Directives</h4>
+                                        <ul className="space-y-4 text-slate-500 font-medium">
+                                            <li>The Lab</li>
+                                            <li>Bio-Optimization</li>
+                                            <li>Supply Chain</li>
+                                            <li>Menu Logic</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 className="font-black mb-8 uppercase tracking-[0.2em] text-xs text-slate-800">Compliance</h4>
+                                        <ul className="space-y-4 text-slate-500 font-medium">
+                                            <li>Ethics Board</li>
+                                            <li>BSL-1 Safety</li>
+                                            <li>Data Privacy</li>
+                                            <li>Lab Results</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="pt-12 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-8">
+                                <div className="text-slate-400 text-xs font-medium uppercase tracking-widest">
+                                    © 2024 Desi Dhaba Molecular Research. All Rights Reserved.
+                                </div>
+                                <div className="flex items-center gap-3 text-[#8B0000] font-black text-xs uppercase tracking-[0.3em] bg-[#8B0000]/5 px-6 py-3 rounded-full border border-[#8B0000]/10">
+                                    <${ShieldCheck} size=${16} />
+                                    <span>Science Project Simulation</span>
+                                </div>
+                            </div>
+                            
+                            <div className="mt-12 p-6 bg-slate-100 rounded-[2rem] text-center text-slate-400 text-[10px] uppercase tracking-widest font-bold border border-slate-200 leading-relaxed">
+                                THIS IS A FAKE WEBSITE CREATED ONLY FOR EDUCATIONAL PURPOSES AS PART OF A SCIENCE PROJECT. ALL SCIENTIFIC CLAIMS ARE PART OF THE CREATIVE EDUCATIONAL SIMULATION DESIGNED BY M. MIKAEEL IMRAN.
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            `;
+        };
+
+        const root = createRoot(document.getElementById('root'));
+        root.render(React.createElement(App));
+    </script>
+</body>
+</html>
